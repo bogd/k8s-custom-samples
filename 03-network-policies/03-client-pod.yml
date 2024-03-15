@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: listener-client
+spec:
+  containers:
+  - name: listener
+    image: alpine
+    stdin: true
+    tty: true

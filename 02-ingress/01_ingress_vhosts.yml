@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: vhosts-blue-green
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: blue.labs.sass.ro
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service: 
+            name: svc-blue
+            port: 
+              number: 8080
+  - host: green.labs.sass.ro
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend: 
+          service:
+            name: svc-green
+            port: 
+              number: 8080
+

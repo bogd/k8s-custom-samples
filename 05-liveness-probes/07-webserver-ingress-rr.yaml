@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: webapp
+  annotations:
+    haproxy.router.openshift.io/disable_cookies: 'true'
+    haproxy.router.openshift.io/balance: 'roundrobin'
+spec:
+  ingressClassName: openshift-default
+  rules:
+  - host: webapp-00.apps.cluster1.openshift.vms.sass.ro
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service: 
+            name: webapp
+            port: 
+              number: 8000

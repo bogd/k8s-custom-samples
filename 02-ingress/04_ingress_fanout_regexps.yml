@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: fanout-red-yellow
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: student.labs.sass.ro
+    http:
+      paths:
+      - path: /red/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: svc-red
+            port:
+              number: 8081
+      - path: /yellow/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: svc-yellow
+            port: 
+              number: 8082
+

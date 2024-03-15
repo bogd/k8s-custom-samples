@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: logtest
+spec:
+  containers:
+    - name: logger
+      image: bogd/logging-test
+      securityContext:
+        allowPrivilegeEscalation: false
+        runAsUser: 1000
+        capabilities:
+          drop: ["ALL"]
+        seccompProfile: 
+          type: RuntimeDefault

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: alpine-nolabel
+spec:
+  containers:
+  - name: alpine
+    stdin: true
+    tty: true
+    image: alpine
+

@@ -1,0 +1,18 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: listener-allow-only-13100
+spec:
+  podSelector:
+    matchLabels:
+      type: listener
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+      - podSelector:
+          matchLabels:
+            type: client 
+    ports:
+      - port: 13100
+

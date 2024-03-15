@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: logtest
+spec:
+  containers:
+    - name: logger
+      image: bogd/logging-test
+      env:
+      - name: LOG_MESSAGE
+        value: "test message from bogd"
+  

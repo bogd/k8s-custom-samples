@@ -1,0 +1,20 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: listener
+spec:
+  selector:
+    type: listener
+  ports:
+  - name: port-13100
+    protocol: TCP
+    port: 13100
+  - name: port-13101
+    protocol: TCP
+    port: 13101
+  - name: port-13102
+    protocol: TCP
+    port: 13102
+  - name: port-13103
+    protocol: TCP
+    port: 13103

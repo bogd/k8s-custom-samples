@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: listener
+  labels:
+    type: listener
+spec:
+  containers:
+  - name: listener
+    image: bogd/listener
+    env:
+    - name: LISTEN_PORTS
+      value: "13100 13101 13102 13103"

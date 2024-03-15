@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: static-content
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: student.labs.sass.ro
+    http:
+      paths:
+      - path: /static
+        pathType: Prefix
+        backend:
+          service:
+            name: svc-red
+            port: 
+              number: 8081 

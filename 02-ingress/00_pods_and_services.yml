@@ -1,0 +1,112 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-blue
+  labels:
+    app: blue
+spec:
+  containers:
+    - name: pws
+      image: bogd/python-webserver:latest
+      env: 
+      - name: COLOR
+        value: "#0000FF"
+      - name: PORT
+        value: "8080"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: svc-blue
+spec:
+  selector:
+    app: blue
+  ports:
+  - protocol: TCP
+    port: 8080
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-green
+  labels:
+    app: green
+spec:
+  containers:
+    - name: pws
+      image: bogd/python-webserver:latest
+      env:
+      - name: COLOR
+        value: "#00FF00"
+      - name: PORT
+        value: "8080"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: svc-green
+spec:
+  selector:
+    app: green
+  ports:
+  - protocol: TCP
+    port: 8080
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-red
+  labels:
+    app: red
+spec:
+  containers:
+    - name: pws
+      image: bogd/python-webserver:latest
+      env:
+      - name: COLOR
+        value: "#FF0000"
+      - name: PORT
+        value: "8081"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: svc-red
+spec:
+  selector:
+    app: red
+  ports:
+  - protocol: TCP
+    port: 8081
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-yellow
+  labels:
+    app: yellow
+spec:
+  containers:
+    - name: pws
+      image: bogd/python-webserver:latest
+      env:
+      - name: COLOR
+        value: "#FFFF00"
+      - name: PORT
+        value: "8082"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: svc-yellow
+spec:
+  selector:
+    app: yellow
+  ports:
+  - protocol: TCP
+    port: 8082
+  type: ClusterIP
+---

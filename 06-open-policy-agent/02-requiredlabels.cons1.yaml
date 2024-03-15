@@ -1,0 +1,14 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sRequiredLabels
+metadata:
+  name: all-pods-must-have-owner
+spec:
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]
+  parameters:
+    message: "All pods must have an `owner` label that points to your user ID"
+    labels:
+      - key: owner
+        allowedRegex: "^user-[0-9][0-9].training.sass.ro$"
