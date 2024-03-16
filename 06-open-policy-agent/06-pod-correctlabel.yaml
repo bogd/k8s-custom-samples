@@ -1,13 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: alpine-goodlabel
+  name: nginx-correct
   labels:
     owner: user-00.training.sass.ro
 spec:
   containers:
-  - name: alpine
-    stdin: true
-    tty: true
-    image: alpine
-
+  - name: nginx
+    image: nginx
