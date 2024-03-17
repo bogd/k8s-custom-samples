@@ -1,13 +1,12 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: alpine-rightreg
+  name: alpine-kubectl
   labels:
-    owner: user-00.training.sass.ro
+    owner: user-[.userIdStr].training.sass.ro
 spec:
   containers:
   - name: alpine
+    image: docker.io/bogd/alpine-kubectl
     stdin: true
     tty: true
-    image: docker.io/bogd/alpine:nonroot
-

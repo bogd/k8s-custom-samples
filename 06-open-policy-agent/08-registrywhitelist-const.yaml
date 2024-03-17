@@ -5,10 +5,10 @@ metadata:
 spec:
   match:
     kinds:
-      - apiGroups: [""]
-        kinds: ["Pod"]
+    - apiGroups: [""]
+      kinds: ["Pod"]
     namespaces:
-      - "default"
+    - user-00
   parameters:
     repos:
-      - "docker.io/bogd"
+    - "docker.io/bogd"
