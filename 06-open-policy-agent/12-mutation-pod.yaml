@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   name: alpine-kubectl
   labels:
-    owner: user-[.userIdStr].training.sass.ro
+    owner: user-00.training.sass.ro
 spec:
   containers:
   - name: alpine
