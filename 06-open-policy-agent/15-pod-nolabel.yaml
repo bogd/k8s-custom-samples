@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: webserver-nolabel
+  labels:
+    owner: user-[.userIdStr].training.sass.ro
+spec:
+  containers:
+  - name: web
+    image: docker.io/bogd/go-webserver
