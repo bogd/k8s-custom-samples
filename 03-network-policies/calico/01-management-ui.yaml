@@ -34,7 +34,7 @@ spec:
           ports:
             - containerPort: 9001
           command:
-          - probe
+          - collect
           - --resources-file=/config/probes.json
           volumeMounts:
           - name: probes-json
