@@ -1,15 +1,7 @@
 apiVersion: v1
-kind: Namespace
-metadata:
-  name: management-ui
-  labels:
-    role: management-ui
----
-apiVersion: v1
 kind: Service
 metadata:
   name: management-ui
-  namespace: management-ui
 spec:
   type: NodePort
   ports:
@@ -23,7 +15,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: management-ui
-  namespace: management-ui
   labels:
     role: management-ui
 spec:
