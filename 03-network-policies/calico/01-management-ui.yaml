@@ -41,4 +41,5 @@ spec:
             mountPath: /config
       volumes:
       - name: probes-json
-        configMap: probes-json
+        configMap: 
+          name: probes-json
