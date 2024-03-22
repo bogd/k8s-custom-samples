@@ -33,3 +33,12 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 9001
+          command:
+          - probe
+          - --resources-file=/config/probes.json
+          volumeMounts:
+          - name: probes-json
+            mountPath: /config
+      volumes:
+      - name: probes-json
+        configMap: probes-json
