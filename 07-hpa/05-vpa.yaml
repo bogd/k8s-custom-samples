@@ -1,0 +1,23 @@
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: webapp2-vpa
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind:       Deployment
+    name:       webapp2
+  updatePolicy:
+    updateMode: "Auto"
+  resourcePolicy:
+    containerPolicies:
+    - containerName: '*'
+      minAllowed:
+        cpu: 100m
+        memory: 50Mi
+      maxAllowed:
+        cpu: "1"
+        memory: 500Mi
+      controlledResources:
+      - cpu
+        
