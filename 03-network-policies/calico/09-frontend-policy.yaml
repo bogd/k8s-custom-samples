@@ -8,7 +8,7 @@ spec:
       role: frontend
   ingress:
   - from:
-    - namespaceSelector:
+    - podSelector:
         matchLabels:
           role: client
     ports:
