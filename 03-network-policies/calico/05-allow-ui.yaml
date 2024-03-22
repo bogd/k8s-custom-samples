@@ -4,7 +4,8 @@ metadata:
   name: allow-ui
 spec:
   podSelector:
-    matchLabels: {}
+    matchLabels: 
+      app: stars
   ingress:
   - from:
     - podSelector:

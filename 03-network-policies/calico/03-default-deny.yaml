@@ -4,7 +4,8 @@ metadata:
   name: default-deny
 spec:
   podSelector:
-    matchLabels: {}
+    matchLabels: 
+      app: stars  # Use matchLabels: {} for a global default deny
   policyTypes:
   - Ingress
   
