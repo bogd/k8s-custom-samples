@@ -1,3 +1,6 @@
+# Based on the Calico/Tigera "stars" Network Policy demo
+# https://docs.tigera.io/calico/latest/network-policy/get-started/kubernetes-policy/kubernetes-demo#running-the-stars-example
+
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -50,12 +53,12 @@ spec:
     spec:
       containers:
         - name: management-ui
-          image: calico/star-collect:multiarch
+          image: bogd/stars-policy-demo:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 9001
           command:
-          - collect
+          - /star/collect
           - --resources-file=/config/probes.json
           volumeMounts:
           - name: probes-json
@@ -95,10 +98,10 @@ spec:
     spec:
       containers:
         - name: backend
-          image: calico/star-probe:multiarch
+          image: bogd/stars-policy-demo:latest
           imagePullPolicy: Always
           command:
-            - probe
+            - /star/probe
             - --http-port=6379
             - --urls=http://frontend:80/status,http://backend:6379/status,http://client:9000/status
           ports:
@@ -134,10 +137,10 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: calico/star-probe:multiarch
+          image: bogd/stars-policy-demo:latest
           imagePullPolicy: Always
           command:
-            - probe
+            - /star/probe
             - --http-port=80
             - --urls=http://frontend:80/status,http://backend:6379/status,http://client:9000/status
           ports:
@@ -162,10 +165,10 @@ spec:
     spec:
       containers:
         - name: client
-          image: calico/star-probe:multiarch
+          image: bogd/stars-policy-demo:latest
           imagePullPolicy: Always
           command:
-            - probe
+            - /star/probe
             - --http-port=9000 # default
             - --urls=http://frontend:80/status,http://backend:6379/status
           ports:
