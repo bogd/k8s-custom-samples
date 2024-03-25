@@ -1,0 +1,11 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: pod-reader
+rules:
+- apiGroups: [""] # The empty string here means the core API („v1”)
+  resources: ["pods"]
+  verbs: ["get", "list"]
+- apiGroups: [""] # The empty string here means the core API („v1”)
+  resources: ["nodes"]
+  verbs: ["list"]
