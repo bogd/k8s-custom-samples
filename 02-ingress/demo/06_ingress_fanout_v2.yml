@@ -1,3 +1,25 @@
+---
+# We still need to serve the static content from somewhere...
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: static-content
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: student.labs.sass.ro
+    http:
+      paths:
+      - path: /static
+        pathType: Prefix
+        backend:
+          service:
+            name: svc-red
+            port: 
+              number: 8081         
+---
+
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -7,7 +29,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: user-00.labs.sass.ro
+  - host: student.labs.sass.ro
     http:
       paths:
       - path: /red(/|$)(.*)
@@ -17,6 +39,7 @@ spec:
             name: svc-red
             port: 
               number: 8081
+
       - path: /yellow(/|$)(.*)
         pathType: ImplementationSpecific
         backend:

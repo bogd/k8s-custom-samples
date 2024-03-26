@@ -5,7 +5,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: blue.user-00.labs.sass.ro
+  - host: blue.labs.sass.ro
     http:
       paths:
       - path: /
@@ -15,7 +15,7 @@ spec:
             name: svc-blue
             port: 
               number: 8080
-  - host: green.user-00.labs.sass.ro
+  - host: green.labs.sass.ro
     http:
       paths:
       - path: /
