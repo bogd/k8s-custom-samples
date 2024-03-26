@@ -6,8 +6,8 @@ metadata:
     app: blue
 spec:
   containers:
-    - name: pws
-      image: bogd/python-webserver:latest
+    - name: gows
+      image: bogd/go-webserver:latest
       env: 
       - name: COLOR
         value: "#0000FF"
@@ -34,8 +34,8 @@ metadata:
     app: green
 spec:
   containers:
-    - name: pws
-      image: bogd/python-webserver:latest
+    - name: gows
+      image: bogd/go-webserver:latest
       env:
       - name: COLOR
         value: "#00FF00"
@@ -62,8 +62,8 @@ metadata:
     app: red
 spec:
   containers:
-    - name: pws
-      image: bogd/python-webserver:latest
+    - name: gows
+      image: bogd/go-webserver:latest
       env:
       - name: COLOR
         value: "#FF0000"
@@ -90,8 +90,8 @@ metadata:
     app: yellow
 spec:
   containers:
-    - name: pws
-      image: bogd/python-webserver:latest
+    - name: gows
+      image: bogd/go-webserver:latest
       env:
       - name: COLOR
         value: "#FFFF00"

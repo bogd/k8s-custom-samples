@@ -1,19 +1,16 @@
 #!/bin/bash
 
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.0.0-beta.3/deploy/static/provider/baremetal/deploy.yaml
+LATEST_VERSION=$(curl -s https://api.github.com/repos/kubernetes/ingress-nginx/releases | jq '.[].tag_name|select(. | startswith("controller-"))' -r | head -n 1)
 
-# For k8s 1.22, there seem to be some issues with the releases?
-# https://github.com/kubernetes/ingress-nginx/issues/7448
-# https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.0.0-beta.3/deploy/static/provider/baremetal/deploy.yaml
-# For now, it might need kubectl delete -A validatingwebhookconfiguration.admissionregistration.k8s.io/ingress-nginx-admission
+echo "Installing Nginx ingress controller - found latest release $LATEST_VERSION"
 
-# Workaround for webhook validation failures (if patch job fails):
-# 
-# CA_DATA=$(kubectl get secret -n ingress-nginx ingress-nginx-admission -o jsonpath={.data.ca})
-# kubectl patch validatingwebhookconfiguration ingress-nginx-admission --type "json" -p "[{\"op\": \"add\", \"path\":\"/webhooks/0/clientConfig/caBundle\", \"value\": \"$CA_DATA\"}]"
+#kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.3.0/deploy/static/provider/baremetal/deploy.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/$LATEST_VERSION/deploy/static/provider/baremetal/deploy.yaml
 
+echo "Patching nodePorts for ingress controller"
 kubectl patch -n ingress-nginx svc ingress-nginx-controller -p '{"spec":{"ports":[{"port":80, "nodePort":31080}, {"port":443, "nodePort":31443}]}}'
 
+echo -n "Waiting up to 120s for ingress controller to start..."
 
 # Not mandatory, but recommended:
 # https://kubernetes.github.io/ingress-nginx/deploy/
@@ -23,3 +20,6 @@ kubectl wait --namespace ingress-nginx \
   --for=condition=ready pod \
   --selector=app.kubernetes.io/component=controller \
   --timeout=120s
+
+echo "done!"
+
