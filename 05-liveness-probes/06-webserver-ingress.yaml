@@ -5,7 +5,7 @@ metadata:
 spec:
   ingressClassName: openshift-default
   rules:
-  - host: webapp-00.apps.cluster1.openshift.vms.sass.ro
+  - host: webapp-00.labs.sass.ro
     http:
       paths:
       - path: /
