@@ -15,5 +15,5 @@ spec:
     spec:
       containers:
       - name: webserver
-        image: bogd/go-webserver:latest 
+        image: bogd/go-webserver-distroless:latest 
         

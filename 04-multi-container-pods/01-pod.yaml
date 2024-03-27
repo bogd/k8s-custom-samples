@@ -12,5 +12,5 @@ spec:
     command:
     - /bin/bash
     - -c
-    - ping -c 1 api-server && curl -fs api-server:8000/hello || exit 1
+    - echo -n "Getting data from API server... " && curl -s api-server:8000/hello
   restartPolicy: Never
