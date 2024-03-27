@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: webapp
 spec:
-  ingressClassName: openshift-default
+  ingressClassName: nginx
   rules:
   - host: webapp-00.labs.sass.ro
     http:
