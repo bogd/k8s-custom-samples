@@ -16,4 +16,6 @@ spec:
       containers:
       - name: webserver
         image: bogd/go-webserver-distroless:latest 
-        
+        env:
+        - name: STUDENT_NAME
+          value: Bogdan
