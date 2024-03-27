@@ -1,0 +1,57 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: es-data-user00-0
+spec:
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /localvols/user-00/es/esnode-0
+    type: DirectoryOrCreate
+  # Force claimRef to ensure the order in which the PVs are claimed
+  claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: elasticsearch-data-es-cluster-01-es-default-0
+      namespace: user-00
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: es-data-user00-1
+spec:
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    type: DirectoryOrCreate
+    path: /localvols/user-00/es/esnode-1
+  # Force claimRef to ensure the order in which the PVs are claimed
+  claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: elasticsearch-data-es-cluster-01-es-default-1
+      namespace: user-00
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: es-data-user00-2
+spec:
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /localvols/user-00/es/esnode-2
+    type: DirectoryOrCreate
+  # Force claimRef to ensure the order in which the PVs are claimed
+  claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: elasticsearch-data-es-cluster-01-es-default-2
+      namespace: user-00
+---

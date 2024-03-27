@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-client
+  labels:
+    app: myapp
+    type: client
+spec:
+  containers:
+  - name: api-client
+    image: bogd/alpine-tools:latest
+    command:
+    - /bin/bash
+    - -c
+    - ping -c 1 api-server && curl -fs api-server:8000/hello || exit 1
+  restartPolicy: Never

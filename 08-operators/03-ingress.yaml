@@ -8,7 +8,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: kib-00.labs.sass.ro
+  - host: kib-00.k8s-custom.labs.sass.ro
     http:
       paths:
       - path: /

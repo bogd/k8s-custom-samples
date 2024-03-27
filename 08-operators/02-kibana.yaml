@@ -8,7 +8,7 @@ spec:
   count: 1
   elasticsearchRef:
     name: es-cluster-01
-    namespace: user-03
+    namespace: user-00
   podTemplate:
     spec:
       containers:
