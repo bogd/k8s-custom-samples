@@ -12,5 +12,5 @@ spec:
     command:
     - /bin/bash
     - -c
-    - echo -n "Getting data from API server... " && curl -s api-server:8000/hello && echo
+    - echo "Getting data from API server... " && curl -s api-server:8000/hello && echo
   restartPolicy: Never
