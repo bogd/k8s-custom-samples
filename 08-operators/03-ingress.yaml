@@ -4,10 +4,11 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
   name: kibana
-  namespace: user-03
+  namespace: user-00
 spec:
+  ingressClassName: nginx
   rules:
-  - host: kib-03.apps.cluster1.openshift.vms.sass.ro
+  - host: kib-00.labs.sass.ro
     http:
       paths:
       - path: /
@@ -17,7 +18,3 @@ spec:
             name: kibana-01-kb-http
             port: 
               number: 5601
-#  tls: 
-#  - hosts:
-#    - proxy.labs.sass.ro
-#    secretName: proxy.labs.sass.ro-cert 
