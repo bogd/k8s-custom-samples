@@ -12,8 +12,7 @@ spec:
         - siege
         - --concurrent=5
         - --benchmark
-        - --time=10m
+        - --time=5m
         - http://webapp:8000
       restartPolicy: Never
   backoffLimit: 4
-  
