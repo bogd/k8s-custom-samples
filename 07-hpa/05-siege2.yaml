@@ -13,7 +13,7 @@ spec:
         - --concurrent=5
         - --benchmark
         - --time=10m
-        - http://webapp:8000
+        - http://webapp2:8000
       restartPolicy: Never
   backoffLimit: 4
 
