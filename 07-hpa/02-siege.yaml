@@ -16,3 +16,5 @@ spec:
         - http://webapp:8000
       restartPolicy: Never
   backoffLimit: 4
+  ttlSecondsAfterFinished: 60
+  
