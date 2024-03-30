@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: alpine-kubectl
+spec:
+  serviceAccountName: pod-viewer
+  containers:
+    - name: alpine
+      image: bogd/alpine-kubectl:latest
+      stdin: true
+      tty: true
+
